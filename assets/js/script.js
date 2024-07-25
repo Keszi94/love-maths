@@ -15,6 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
 
+    // makes it so that the answer can be submitted by pressing the Enter key
+document.getElementById("answer-box").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        checkAnswer();
+    }
+})
+
     runGame("addition");
 
 })
@@ -24,6 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
  * and after the user's answer has been processed
  */
 function runGame(gameType) {
+
+    //  After pressing submit the numbers from the answer field disappear 
+    document.getElementById("answer-box").value = "";
+    //  puts the cursor in the answer box after loading the page (setting the focus)
+    document.getElementById("answer-box").focus();
+
     // Creates two random numbers between 1 and 25
     let num1 = Math.floor(Math.random() * 25) + 1;
     let num2 = Math.floor(Math.random() * 25) + 1;
@@ -113,9 +126,9 @@ function displayAdditionQuestion(operand1, operand2) {
 };
 
 function displaySubtractQuestion(operand1, operand2) {
-document.getElementById("operand1").textContent = operand1 > operand2 ? operand1 : operand2;
-document.getElementById("operand2").textContent = operand1 > operand2 ? operand2 : operand1;
-document.getElementById('operator').textContent = "-";
+    document.getElementById("operand1").textContent = operand1 > operand2 ? operand1 : operand2;
+    document.getElementById("operand2").textContent = operand1 > operand2 ? operand2 : operand1;
+    document.getElementById('operator').textContent = "-";
 };
 
 function displayMultiplyQuestion(operand1, operand2) {
